@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <title>Program GoogleMaps</title>
+  <head>
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>UAS GIS II</h1>
+    <h4>Nama  :Siti Hardianti </h4>
+    <h4>NIM   :20200302008</h4>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var RumahSaya = {
+          lat: -0.8870923253304254,  
+          lng: 119.87882814542832,
+        };
+        var waypoint1 = { lat: -0.8886178821785798,lng: 119.87868640145132};
+        var waypoint2 = { lat: -0.8892947086420893,lng: 119.88149659487134};
+        var waypoint3 = { lat: -0.8938151066783782,lng: 119.88653081171826};
+        var waypoint4 = { lat: -0.8977776353065957,lng: 119.88747615526498};
+        var waypoint5 = { lat: -0.8976237504478676,lng: 119.89006686778957};
+        var waypoint6 = { lat: -0.8997781374857177,lng: 119.89009251841874};
+        var waypoint7 = { lat: -0.8998294324001678,lng: 119.89070813327768};
+        var walikota = { lat: -0.9000602595062686,lng: 119.89075943451593};
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: RumahSaya,
+        });
+        var marker1 = new google.maps.Marker({
+          position: RumahSaya,
+          map: map
+        });
+        var marker2 = new google.maps.Marker({ position: walikota, map: map });
+
+        var polyline = new google.maps.Polyline({
+          path: [
+            RumahSaya,
+            waypoint1,
+            waypoint2,
+            waypoint3,
+            waypoint4,
+            waypoint5,
+            waypoint6,
+            waypoint7,
+            walikota,
+          ],
+          strokeColor: "pink",
+          strokeOpacity: 5,
+          strokeWeight: 3.5,
+        });
+
+        polyline.setMap(map);
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlv-a8iwH4Sl3I-2I2ub9FohmYSKG-zfw&callback=initMap"
+    ></script>
+  </body>
+</html>
